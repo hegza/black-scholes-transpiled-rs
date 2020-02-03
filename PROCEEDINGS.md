@@ -4,6 +4,7 @@
 2. Fix `pyrs` transpilation failures.
     * Pyrs called library functions with integers instead of floats, relying on Python's automatic cast.
     * Python's `float` is 64-bit, converted to `f64` instead of `f32` offered by pyrs.
+    * Pyrs failed to trace parentheses from Python side to Rust. Went through all calculations and fixed the problem.
 3. Add `mod` where relevant.
     * `pyrs` could not recognize local imports from library imports.
 4. Make BS-functions public.
@@ -32,3 +33,4 @@
 1. Code compiles, but results match is not verified. Performance is not measured.
 2. Manual part of transpilation took two hours with meticulous note taking and focus on automatizability.
 3. Applied `cargo fix` & `cargo +nightly fix -Z unstable-options --clippy`.
+4. Regression testing assertions failed. Failure attributed to incorrect parentheses error introduced by pyrs.

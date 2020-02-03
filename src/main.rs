@@ -1,8 +1,10 @@
-
-
-
 mod black_scholes_dp;
 mod black_scholes_ndp;
+#[cfg(test)]
+mod test_regression;
+#[cfg(test)]
+#[macro_use]
+extern crate approx;
 
 use black_scholes_dp::*;
 use black_scholes_ndp::*;
