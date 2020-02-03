@@ -1,39 +1,56 @@
+use statrs::distribution::Univariate;
 use std::collections::HashMap;
 use std::*;
 
-use numpy::float64;
-pub fn black_scholes_call_div(S: i32, K: i32, T: i32, r: f32, q: f32, sigma: f32) -> float64 {
-    let d1 = np.log(S / K) + r - q + 0.5 * sigma.pow(2) * T / sigma * np.sqrt(T);
-    let d2 = np.log(S / K) + r - q - 0.5 * sigma.pow(2) * T / sigma * np.sqrt(T);
-    let call = S * np.exp(-(q) * T) * si.norm.cdf(d1, 0.0, 1.0)
-        - K * np.exp(-(r) * T) * si.norm.cdf(d2, 0.0, 1.0);
+pub fn black_scholes_call_div(S: f64, K: f64, T: f64, r: f64, q: f64, sigma: f64) -> f64 {
+    let d1 = f64::ln(S / K) + r - q + 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
+    let d2 = f64::ln(S / K) + r - q - 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
+    let call =
+        S * f64::exp(-(q) * T) * statrs::distribution::Normal::new(0.0, 1.0).unwrap().cdf(d1)
+            - K * f64::exp(-(r) * T) * statrs::distribution::Normal::new(0.0, 1.0).unwrap().cdf(d2);
     return call;
 }
-pub fn black_scholes_put_div(S: i32, K: i32, T: i32, r: f32, q: f32, sigma: f32) -> float64 {
-    let d1 = np.log(S / K) + r - q + 0.5 * sigma.pow(2) * T / sigma * np.sqrt(T);
-    let d2 = np.log(S / K) + r - q - 0.5 * sigma.pow(2) * T / sigma * np.sqrt(T);
-    let put = K * np.exp(-(r) * T) * si.norm.cdf(-(d2), 0.0, 1.0)
-        - S * np.exp(-(q) * T) * si.norm.cdf(-(d1), 0.0, 1.0);
+pub fn black_scholes_put_div(S: f64, K: f64, T: f64, r: f64, q: f64, sigma: f64) -> f64 {
+    let d1 = f64::ln(S / K) + r - q + 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
+    let d2 = f64::ln(S / K) + r - q - 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
+    let put = K
+        * f64::exp(-(r) * T)
+        * statrs::distribution::Normal::new(0.0, 1.0)
+            .unwrap()
+            .cdf(-(d2))
+        - S * f64::exp(-(q) * T)
+            * statrs::distribution::Normal::new(0.0, 1.0)
+                .unwrap()
+                .cdf(-(d1));
     return put;
 }
 pub fn euro_vanilla_dividend(
-    S: i32,
-    K: i32,
-    T: i32,
-    r: f32,
-    q: f32,
-    sigma: f32,
+    S: f64,
+    K: f64,
+    T: f64,
+    r: f64,
+    q: f64,
+    sigma: f64,
     option: &str,
-) -> float64 {
-    let d1 = np.log(S / K) + r - q + 0.5 * sigma.pow(2) * T / sigma * np.sqrt(T);
-    let d2 = np.log(S / K) + r - q - 0.5 * sigma.pow(2) * T / sigma * np.sqrt(T);
-    if option == "call" {
-        let mut result = S * np.exp(-(q) * T) * si.norm.cdf(d1, 0.0, 1.0)
-            - K * np.exp(-(r) * T) * si.norm.cdf(d2, 0.0, 1.0);
-    }
-    if option == "put" {
-        let mut result = K * np.exp(-(r) * T) * si.norm.cdf(-(d2), 0.0, 1.0)
-            - S * np.exp(-(q) * T) * si.norm.cdf(-(d1), 0.0, 1.0);
-    }
-    return result;
+) -> f64 {
+    let d1 = f64::ln(S / K) + r - q + 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
+    let d2 = f64::ln(S / K) + r - q - 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
+    return match option {
+        "call" => {
+            S * f64::exp(-(q) * T) * statrs::distribution::Normal::new(0.0, 1.0).unwrap().cdf(d1)
+                - K * f64::exp(-(r) * T)
+                    * statrs::distribution::Normal::new(0.0, 1.0).unwrap().cdf(d2)
+        }
+        "put" => {
+            K * f64::exp(-(r) * T)
+                * statrs::distribution::Normal::new(0.0, 1.0)
+                    .unwrap()
+                    .cdf(-(d2))
+                - S * f64::exp(-(q) * T)
+                    * statrs::distribution::Normal::new(0.0, 1.0)
+                        .unwrap()
+                        .cdf(-(d1))
+        }
+        _ => panic!(),
+    };
 }
