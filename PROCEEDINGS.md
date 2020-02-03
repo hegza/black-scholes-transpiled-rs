@@ -34,3 +34,7 @@
 2. Manual part of transpilation took two hours with meticulous note taking and focus on automatizability.
 3. Applied `cargo fix` & `cargo +nightly fix -Z unstable-options --clippy`.
 4. Regression testing assertions failed. Failure attributed to incorrect parentheses error introduced by pyrs.
+
+### Arch Linux, pylon
+1. Ran `cargo run --release` through `time`. Contents: run each BS-function once. Result `0.02 user, 0.037 total`.
+    * That's a 10× speedup over the interpreted plain Python version.
