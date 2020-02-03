@@ -31,3 +31,4 @@
 #### Meta
 1. Code compiles, but results match is not verified. Performance is not measured.
 2. Manual part of transpilation took two hours with meticulous note taking and focus on automatizability.
+3. Applied `cargo fix` & `cargo +nightly fix -Z unstable-options --clippy`.
