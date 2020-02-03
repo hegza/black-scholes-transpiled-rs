@@ -8,7 +8,7 @@ pub fn black_scholes_call_div(S: f64, K: f64, T: f64, r: f64, q: f64, sigma: f64
     let call =
         S * f64::exp(-(q) * T) * statrs::distribution::Normal::new(0.0, 1.0).unwrap().cdf(d1)
             - K * f64::exp(-(r) * T) * statrs::distribution::Normal::new(0.0, 1.0).unwrap().cdf(d2);
-    return call;
+    call
 }
 pub fn black_scholes_put_div(S: f64, K: f64, T: f64, r: f64, q: f64, sigma: f64) -> f64 {
     let d1 = f64::ln(S / K) + r - q + 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
@@ -22,7 +22,7 @@ pub fn black_scholes_put_div(S: f64, K: f64, T: f64, r: f64, q: f64, sigma: f64)
             * statrs::distribution::Normal::new(0.0, 1.0)
                 .unwrap()
                 .cdf(-(d1));
-    return put;
+    put
 }
 pub fn euro_vanilla_dividend(
     S: f64,
@@ -35,7 +35,7 @@ pub fn euro_vanilla_dividend(
 ) -> f64 {
     let d1 = f64::ln(S / K) + r - q + 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
     let d2 = f64::ln(S / K) + r - q - 0.5 * sigma.powi(2) * T / sigma * f64::sqrt(T);
-    return match option {
+    match option {
         "call" => {
             S * f64::exp(-(q) * T) * statrs::distribution::Normal::new(0.0, 1.0).unwrap().cdf(d1)
                 - K * f64::exp(-(r) * T)
@@ -52,5 +52,5 @@ pub fn euro_vanilla_dividend(
                         .cdf(-(d1))
         }
         _ => panic!(),
-    };
+    }
 }
