@@ -1,5 +1,5 @@
 use statrs::distribution::Univariate;
-use std::collections::HashMap;
+
 use std::*;
 
 pub fn euro_vanilla_call(S: f64, K: f64, T: f64, r: f64, sigma: f64) -> f64 {
