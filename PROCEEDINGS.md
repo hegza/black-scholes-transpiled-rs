@@ -27,3 +27,7 @@
         * This would fail for broadcasting {X}. Works for scalar only.
         * {loc} = {mean}, {scale} = {stddev} (verified from docs)
     * Add required dependency: `use statrs::distribution::Univariate;`.
+
+#### Meta
+1. Code compiles, but results match is not verified. Performance is not measured.
+2. Manual part of transpilation took two hours with meticulous note taking and focus on automatizability.
