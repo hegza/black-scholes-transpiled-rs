@@ -1,6 +1,9 @@
 use std::collections::HashMap;
 use std::*;
 
+mod black_scholes_dp;
+mod black_scholes_ndp;
+
 use black_scholes_dp::*;
 use black_scholes_ndp::*;
 fn main() {
