@@ -25,6 +25,9 @@
 4. Map out conversions from `si`, case-by-case.
     * `si.norm.cdf({x}, {loc}, {scale})` -> `statrs::distribution::Normal::new({loc}, {scale}).cdf({$x})`.
         * Regex: `si.norm.cdf\(((?:\w|-|\(|\))+),(?: *?)(\d+\.?\d*),(?: *?)(\d+\.?\d*)\)` -> `statrs::distribution::Normal::new($2, $3).unwrap().cdf($1)`
+            * Capture identifier parameter with potential minus `((?:\w|-|\(|\))+)`
+            * Capture decimal-literal parameter `(\d+\.?\d*)`
+            * Ignore potential whitespace `(?: *?)`
         * This would fail for broadcasting {X}. Works for scalar only.
         * {loc} = {mean}, {scale} = {stddev} (verified from docs)
     * Add required dependency: `use statrs::distribution::Univariate;`.
