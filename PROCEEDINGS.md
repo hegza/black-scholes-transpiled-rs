@@ -54,3 +54,8 @@
     * put no-div              time:   [74.875 ns 74.930 ns 74.985 ns]
     * call div                time:   [75.022 ns 75.056 ns 75.087 ns]
     * put div                 time:   [76.899 ns 76.974 ns 77.059 ns]
+3. Re-ran benches of #2 at a later time. Considerable improvements.
+    * call no-div             time:   [52.722 ns 52.744 ns 52.765 ns]
+    * put no-div              time:   [55.885 ns 55.911 ns 55.939 ns]
+    * call div                time:   [56.847 ns 56.864 ns 56.880 ns]
+    * put div                 time:   [60.262 ns 60.281 ns 60.299 ns]
