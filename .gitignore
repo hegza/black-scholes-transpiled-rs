@@ -1,1 +1,3 @@
 /target
+# Ignore for binary targets
+Cargo.toml

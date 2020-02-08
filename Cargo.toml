@@ -1,10 +1,11 @@
 [package]
-name = "black-scholes-transpiled-rs"
+name = "black_scholes"
 version = "0.1.0"
 authors = ["Henri Lunnikivi <henri.lunnikivi@gmail.com>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "black_scholes"
 
 [dependencies]
 ndarray = "0.13.0"
@@ -12,3 +13,8 @@ statrs = "0.12.0"
 
 [dev-dependencies]
 approx = "0.3.2"
+criterion = "*"
+
+[[bench]]
+name = "black_scholes"
+harness = false

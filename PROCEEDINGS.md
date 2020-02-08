@@ -41,3 +41,16 @@
 ### Arch Linux, pylon
 1. Ran `cargo run --release` through `time`. Contents: run each BS-function once. Result `0.02 user, 0.037 total`.
     * That's a 10× speedup over the interpreted plain Python version.
+
+## 8.2.-20
+### Etana
+1. Wrote benchmarks naively, just call functions with fixed parameters. Quick results, no machine setup.
+    * call no-div             time:   [71.751 ns 71.783 ns 71.814 ns]
+    * put no-div              time:   [73.517 ns 73.574 ns 73.644 ns]
+    * call div                time:   [74.824 ns 74.888 ns 74.967 ns]
+    * put div                 time:   [76.616 ns 76.639 ns 76.661 ns]
+2. Black box inputs. Quick results, no machine setup. Seems to have gotten slightly slower.
+    * call no-div             time:   [72.237 ns 72.299 ns 72.370 ns]
+    * put no-div              time:   [74.875 ns 74.930 ns 74.985 ns]
+    * call div                time:   [75.022 ns 75.056 ns 75.087 ns]
+    * put div                 time:   [76.899 ns 76.974 ns 77.059 ns]
