@@ -1,4 +1,4 @@
-#![allow(snake_case)]
+#![allow(non_snake_case)]
 
 #[cfg(test)]
 #[macro_use]
