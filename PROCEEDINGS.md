@@ -59,3 +59,11 @@
     * put no-div              time:   [55.885 ns 55.911 ns 55.939 ns]
     * call div                time:   [56.847 ns 56.864 ns 56.880 ns]
     * put div                 time:   [60.262 ns 60.281 ns 60.299 ns]
+
+### Arch Linux, pylon
+1. Took quick benchmarks.
+    * call no-div             time:   [131.30 ns 131.85 ns 132.73 ns]
+    * put no-div              time:   [137.22 ns 138.02 ns 138.81 ns]
+    * call div                time:   [140.14 ns 140.98 ns 141.89 ns]
+    * put div                 time:   [149.99 ns 151.20 ns 152.47 ns]
+
