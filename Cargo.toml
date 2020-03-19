@@ -7,14 +7,10 @@ edition = "2018"
 [lib]
 name = "black_scholes"
 
-[[bin]]
-name = "black_scholes"
-
 [dependencies]
 statrs = "0.12.0"
 itertools = "0.9.0"
 rand = "0.7.3"
-savefile = "0.6.1"
 
 [dev-dependencies]
 approx = "0.3.2"
