@@ -21,8 +21,8 @@ struct DivInput {
     sigma: f64,
 }
 
+// Just a quick benchmark for single functions, not used in final results
 pub fn criterion_benchmark(c: &mut Criterion) {
-    // TODO: random inputs
     let (S, K, T, r, q, sigma) = (b(50.), b(100.), b(1.), b(0.05), b(0.06), b(0.25));
 
     c.bench_function("call no-div", |b| {
