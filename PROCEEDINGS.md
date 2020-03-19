@@ -67,3 +67,8 @@
     * call div                time:   [140.14 ns 140.98 ns 141.89 ns]
     * put div                 time:   [149.99 ns 151.20 ns 152.47 ns]
 
+## 15.3.-20
+### Etana
+- Took a quick measurement of repeated calls using iterators. 562500 options in 49.237 ms.
+    * 11,424,335.3576 billion options / second
+    * 8.75324444e-8 seconds per option
